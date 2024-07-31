@@ -1,7 +1,9 @@
+import logging
+
 from fastapi import APIRouter, Path, HTTPException, status, Request, Depends
 from starlette.templating import Jinja2Templates
 
-from model import Todo, TodoItem, TodoItems
+from model import TodoItem, TodoItems, Todo
 
 todo_router = APIRouter()
 
@@ -13,6 +15,7 @@ templates = Jinja2Templates(directory="templates/")
 
 @todo_router.post("/todo")
 async def add_todo(request: Request, todo: Todo = Depends(Todo.as_form)):
+    logging.debug(todo)
     todo.id = len(todo_list) + 1
     todo_list.append(todo)
     return templates.TemplateResponse(
@@ -24,7 +27,7 @@ async def add_todo(request: Request, todo: Todo = Depends(Todo.as_form)):
 
 
 @todo_router.get("/todo", response_model=TodoItems)
-async def retrieve_todos(request : Request):
+async def retrieve_todos(request: Request):
     return templates.TemplateResponse("todo.html",
     {
         "request": request,
