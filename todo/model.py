@@ -11,14 +11,16 @@ class Todo(BaseModel):
     @classmethod
     def as_form(
             cls,
-            item: str = Form(...)):
+            item: str = Form(...)
+    ):
         return cls(item=item)
+
 
     class Config:
         schema_extra = {
             "example": {
                 "id": 1,
-                "item": "Example Schema!",
+                "item": "Example schema!"
             }
         }
 
@@ -29,7 +31,7 @@ class TodoItem(BaseModel):
     class Config:
         schema_extra = {
             "example": {
-                "item": "Read the next chapter of the book",
+                "item": "Read the next chapter of the book"
             }
         }
 
@@ -41,8 +43,12 @@ class TodoItems(BaseModel):
         schema_extra = {
             "example": {
                 "todos": [
-                    {"item": "Example schema 1!"},
-                    {"item": "Example schema 2!"},
+                    {
+                        "item": "Example schema 1!"
+                    },
+                    {
+                        "item": "Example schema 2!"
+                    }
                 ]
             }
         }
