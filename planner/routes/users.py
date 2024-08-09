@@ -8,7 +8,7 @@ user_router = APIRouter(
 )
 
 user_database = Database(User)
-
+hash_password = HashPassword()
 
 @user_router.post("/signup")
 async def sign_new_user(user: User) -> dict:
@@ -18,6 +18,9 @@ async def sign_new_user(user: User) -> dict:
             status_code=status.HTTP_409_CONFLICT,
             detail="User with supplied username exists"
         )
+    hashed_password = hash_password.create_hash(user.password)
+    user.password = hashed_password
+    await user_database.save(user)
     await user_database.save(user)
     return {
         "message": "User successfully registered!"
