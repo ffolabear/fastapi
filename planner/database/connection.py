@@ -9,6 +9,7 @@ from models.users import User
 
 
 class Settings(BaseSettings):
+    SECRET_KEY: Optional[str]
     DATABASE_URL: Optional[str] = None
 
     async def initialize_database(self):
