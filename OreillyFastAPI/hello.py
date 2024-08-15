@@ -8,6 +8,12 @@ def greet(who):
     return f"Hello? {who}"
 
 
+@app.get("/hi")
+def greet(who):
+    return f"Hello? {who}"
+
+
 if __name__ == "__main__":
     import uvicorn
+
     uvicorn.run("hello:app", reload=True)
