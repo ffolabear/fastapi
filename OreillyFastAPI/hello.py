@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Body, Header
+from fastapi import FastAPI, Body, Header, Response
 
 app = FastAPI()
 
@@ -32,6 +32,11 @@ def get_agent(user_agent: str = Header()):
 def happy(status_code=200):
     return ":)"
 
+
+@app.get("/header/{name}/{value}")
+def header(name: str, value: str, response: Response):
+    response.headers[name] = value
+    return "normal body"
 
 
 if __name__ == "__main__":
