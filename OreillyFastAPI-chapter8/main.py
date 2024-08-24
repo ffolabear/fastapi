@@ -1,13 +1,21 @@
 from fastapi import FastAPI
 
+from web import explorer
+
 app = FastAPI()
 
+app.include_router(explorer.router)
 
 @app.get("/")
 async def root():
-    return {"message": "Hello World"}
+    return "top here"
 
 
-@app.get("/hello/{name}")
-async def say_hello(name: str):
-    return {"message": f"Hello {name}"}
+@app.get("/echo/{thing}")
+def echo(thing):
+    return f"echoing {thing}"
+
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run("main:app", reload=True)
