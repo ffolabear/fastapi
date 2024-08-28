@@ -7,3 +7,4 @@ class Creature(BaseModel):
     area: str
     description: str
     aka: str
+
