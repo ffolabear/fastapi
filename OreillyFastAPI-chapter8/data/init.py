@@ -1,6 +1,6 @@
 import os
 from pathlib import Path
-from sqlite3 import Connection, Cursor, connect
+from sqlite3 import Connection, Cursor, connect, IntegrityError
 
 conn: Connection | None = None
 curs: Cursor | None = None
