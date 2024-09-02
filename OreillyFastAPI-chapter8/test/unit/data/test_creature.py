@@ -41,14 +41,14 @@ def test_get_one_missing():
 
 
 def test_modify(sample):
-    # creature.name = "sasame street"
-    resp = creature.modify("sasame street", sample)
+    creature.country = "JP"
+    resp = creature.modify(sample.name, sample)
     assert resp == sample
 
 
 def test_modify_missing(sample):
     thing: Creature = Creature(
-        name="snurfle", country="RU", area="", description="some thing", aka=""
+        name="snurfle", description="some thing", country="somewhere", area="", aka=""
     )
     with pytest.raises(Missing):
         _ = creature.modify(thing.name, thing)
