@@ -12,12 +12,17 @@ _creatures = [
         aka="Abominable snowman",
     ),
     Creature(
-        name="Bigfoot", description="Yeti's Cousin Eddie", country="US", area="*", aka="Sasquatch"
+        name="Bigfoot",
+        description="Yeti's Cousin Eddie",
+        country="US",
+        area="*",
+        aka="Sasquatch"
     ),
 ]
 
 
 def get_all() -> list[Creature]:
+    print("fake")
     """생명체 목록을 반환"""
     return _creatures
 

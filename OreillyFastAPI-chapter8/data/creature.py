@@ -39,6 +39,7 @@ def get_one(name: str) -> Creature:
 
 
 def get_all() -> list[Creature]:
+    print("real")
     qry = "select * from creature"
     curs.execute(qry)
     return [row_to_model(row) for row in curs.fetchall()]

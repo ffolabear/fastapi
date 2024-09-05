@@ -9,6 +9,7 @@ else:
 
 
 def get_all() -> list[Creature]:
+    print("service")
     return data.get_all()
 
 
